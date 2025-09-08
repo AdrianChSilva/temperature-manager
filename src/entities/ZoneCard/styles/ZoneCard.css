@@ -1,7 +1,7 @@
 /* Base Card */
 .zone-card {
   position: relative;
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   max-height: 130px;
   background: var(--color-surface);

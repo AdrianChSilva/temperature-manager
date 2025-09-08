@@ -15,3 +15,6 @@ body {
 .text {
   font-size: var(--font-size-base);
 }
+.page-wrap {
+  padding: var(--spacing-md) 15px;
+}

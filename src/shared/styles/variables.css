@@ -26,7 +26,8 @@
   --spacing-lg: 16px;
 
   /* Border Radius */
-  --radius: 12px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
   --radius-full: 9999px;
 
   /* Transiciones */
@@ -43,6 +44,10 @@
   --font-size-base: 14px;
   --font-size-lg: 15px;
   --font-size-xl: 22px;
+
+  /* Chips */
+  --chip-bg: #0b1220;
+  --chip-fg: #cbd2d9;
 }
 
 /* Media Queries */
