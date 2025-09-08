@@ -11,10 +11,6 @@ export default defineConfig({
     alias: { "@": path.resolve(__dirname, "src") },
   },
   base: "./",
-  build: {
-    outDir: path.resolve(__dirname, "mobile/www"),
-    emptyOutDir: true,
-  },
   server: {
     host: true,
   },
