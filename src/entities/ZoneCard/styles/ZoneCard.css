@@ -1,0 +1,211 @@
+/* Base Card */
+.zone-card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  max-height: 130px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-elevated);
+  transition:
+    transform var(--transition-fast),
+    box-shadow 0.28s ease;
+}
+
+.zone-card:hover {
+  transform: translateY(-1px);
+}
+
+/* Sistema de Capas para Estados */
+.zone-card::before,
+.zone-card::after,
+.zone-card .bg-comfort {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.zone-card::before {
+  z-index: 1;
+  background: linear-gradient(
+    to top left,
+    var(--color-heating-start),
+    var(--color-heating-end)
+  );
+}
+
+.zone-card::after {
+  z-index: 2;
+  background: linear-gradient(
+    to top left,
+    var(--color-cooling-start),
+    var(--color-cooling-end)
+  );
+}
+
+.zone-card .bg-comfort {
+  z-index: 3;
+  background: linear-gradient(
+    to top left,
+    var(--color-comfort-start),
+    var(--color-comfort-end)
+  );
+}
+
+.zone-card__active {
+  position: relative;
+  z-index: 4;
+  padding: var(--spacing-lg);
+}
+
+/* Estados */
+.state-heating::before,
+.state-cooling::after,
+.state-comfort .bg-comfort {
+  opacity: 1;
+}
+
+/* Icono Decorativo */
+.zone-card .decorative-icon {
+  content: "";
+  position: absolute;
+  right: -48px;
+  bottom: -58px;
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.65);
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: center;
+  animation: zc-spin 24s linear infinite;
+  transition: opacity var(--transition-slow);
+  z-index: 5;
+}
+
+@keyframes zc-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Estados del icono */
+.state-heating .decorative-icon {
+  opacity: 0.25;
+  mask: url("/src/shared/assets/heat.svg") center/contain no-repeat;
+  -webkit-mask: url("/src/shared/assets/heat.svg") center/contain no-repeat;
+}
+
+.state-cooling .decorative-icon {
+  opacity: 0.25;
+  mask: url("/src/shared/assets/cool.svg") center/contain no-repeat;
+  -webkit-mask: url("/src/shared/assets/cool.svg") center/contain no-repeat;
+}
+
+/* Layout */
+.zc-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.zc-temp__value {
+  font-weight: 700;
+  font-size: var(--font-size-xl);
+  line-height: 1;
+  color: white;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  transition: color var(--transition-normal);
+}
+
+.zc-icons {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* Power Button */
+.zc-power {
+  all: unset;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  transition: transform var(--transition-fast);
+}
+
+.zc-power:active {
+  transform: scale(0.96);
+}
+
+.zc-power__icon {
+  width: 24px;
+  height: 24px;
+  mask: url("/src/shared/assets/power.svg") no-repeat center;
+  mask-size: contain;
+  background-color: white;
+  transition: background-color var(--transition-normal);
+}
+
+/* Footer */
+.zc-foot {
+  margin-top: 22px;
+}
+
+.zc-name {
+  color: white;
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  line-height: 1.1;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--transition-normal);
+}
+
+.zc-sub {
+  margin-top: var(--spacing-xs);
+  color: white;
+  opacity: 0.8;
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  transition:
+    color var(--transition-normal),
+    opacity var(--transition-normal);
+}
+
+.state-off .zc-temp__value,
+.state-off .zc-name {
+  color: var(--color-text-primary);
+}
+
+.state-off .zc-sub {
+  color: var(--color-text-tertiary);
+}
+
+.state-off .zc-power__icon {
+  background-color: var(--color-text-tertiary);
+}
+
+.state-heating .zc-power__icon,
+.state-cooling .zc-power__icon,
+.state-comfort .zc-power__icon {
+  background-color: white;
+}
+
+.state-comfort .decorative-icon,
+.state-off .decorative-icon {
+  opacity: 0;
+  transition: none;
+}
+
+.state-heating .decorative-icon,
+.state-cooling .decorative-icon {
+  transition: opacity var(--transition-slow);
+}
