@@ -36,6 +36,10 @@ export const useAppStore = create(
         { id: "g2", name: "Planta Alta" },
       ],
 
+      ui: {
+        expandedGroups: ["g1", "g2"],
+      },
+
       addZone({ groupId, name, temperature, desiredTemp, power }) {
         const defaultAmbient = 24;
         const temp = Number.isFinite(temperature)
@@ -99,6 +103,29 @@ export const useAppStore = create(
           ),
         });
       },
+
+      expandGroup(groupId) {
+        const currentExpanded = get().ui.expandedGroups;
+        if (!currentExpanded.includes(groupId)) {
+          set({
+            ui: {
+              ...get().ui,
+              expandedGroups: [...currentExpanded, groupId],
+            },
+          });
+        }
+      },
+
+      collapseGroup(groupId) {
+        set({
+          ui: {
+            ...get().ui,
+            expandedGroups: get().ui.expandedGroups.filter(
+              (id) => id !== groupId
+            ),
+          },
+        });
+      },
     }),
     {
       name: "temperature-management",
@@ -107,6 +134,7 @@ export const useAppStore = create(
       partialize: (state) => ({
         zones: state.zones,
         groups: state.groups,
+        ui: state.ui,
       }),
     }
   )
