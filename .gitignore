@@ -14,6 +14,7 @@ dist-ssr
 
 # Testing
 coverage
+test-results
 
 # Editor directories and files
 .vscode/*
