@@ -24,7 +24,7 @@ export default defineConfig({
       reportsDirectory: "coverage",
       include: ["src/**/*.{js,jsx}"],
       exclude: [
-        "src/app/main.jsx",
+        "src/main.jsx",
         "src/app/App.jsx",
         "**/*.{test,spec}.?(js|jsx)",
         "node_modules/**",

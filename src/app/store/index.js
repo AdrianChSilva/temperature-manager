@@ -42,17 +42,21 @@ export const useAppStore = create(
 
       addZone({ groupId, name, temperature, desiredTemp, power }) {
         const defaultAmbient = 24;
+
         const temp = Number.isFinite(temperature)
           ? Number(temperature)
           : defaultAmbient;
+
         const setPoint = Number.isFinite(desiredTemp)
           ? Number(desiredTemp)
           : temp;
+
+        const isOn = typeof on === "boolean" ? power : false;
         const zone = {
           id: crypto.randomUUID(),
           groupId,
           name,
-          power: power,
+          power: isOn,
           temperature: temp,
           desiredTemp: setPoint,
         };
@@ -84,9 +88,15 @@ export const useAppStore = create(
       deleteGroup(id) {
         const filteredGroups = get().groups.filter((group) => group.id !== id);
         const filteredZones = get().zones.filter((zone) => zone.groupId !== id);
+        // Also remove from expandedGroups UI state
+        const expanded = get().ui.expandedGroups.filter((gid) => gid !== id);
         set({
           groups: filteredGroups,
           zones: filteredZones,
+          ui: {
+            ...get().ui,
+            expandedGroups: expanded,
+          },
         });
       },
 
