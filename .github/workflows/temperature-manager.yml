@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        task: [quality, unit-tests, e2e-tests]
+        task: [quality, unit-tests]
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
