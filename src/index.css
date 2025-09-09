@@ -137,3 +137,23 @@ body {
 .btn:active {
   transform: translateY(0);
 }
+
+/* Grid */
+.zones-grid {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .zones-grid {
+    gap: var(--spacing-xl);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .zones-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
