@@ -8,6 +8,9 @@
   --color-text-secondary: #6b7c93;
   --color-text-tertiary: #9aa5b1;
 
+  --color-border: #e5e7eb;
+  --color-border-light: #d9e2ec;
+
   /* Estados de zona */
   --color-comfort-start: #0e6b57;
   --color-comfort-end: #2dcc9a;
@@ -24,9 +27,11 @@
   --spacing-sm: 8px;
   --spacing-md: 12px;
   --spacing-lg: 16px;
+  --spacing-xl: 30px;
 
   /* Border Radius */
-  --radius: 12px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
   --radius-full: 9999px;
 
   /* Transiciones */
@@ -43,6 +48,10 @@
   --font-size-base: 14px;
   --font-size-lg: 15px;
   --font-size-xl: 22px;
+
+  /* Chips */
+  --chip-bg: #0b1220;
+  --chip-fg: #cbd2d9;
 }
 
 /* Media Queries */
