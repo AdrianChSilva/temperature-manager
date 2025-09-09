@@ -8,6 +8,9 @@
   --color-text-secondary: #6b7c93;
   --color-text-tertiary: #9aa5b1;
 
+  --color-border: #e5e7eb;
+  --color-border-light: #d9e2ec;
+
   /* Estados de zona */
   --color-comfort-start: #0e6b57;
   --color-comfort-end: #2dcc9a;
