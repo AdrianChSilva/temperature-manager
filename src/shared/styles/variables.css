@@ -21,8 +21,20 @@
   --color-heating-start: #cf1e11;
   --color-heating-end: #ef694e;
 
+  /* Estados de botones */
+  --color-on: rgb(34, 197, 94);
+  --color-on-hover-bg: rgba(34, 197, 94, 0.05);
+  --color-on-hover-border: rgba(34, 197, 94, 0.2);
+  --color-off: rgb(239, 68, 68);
+  --color-off-hover-bg: rgba(239, 68, 68, 0.05);
+  --color-off-hover-border: rgba(239, 68, 68, 0.2);
+
   /* Sombras */
   --shadow-card: 0 4px 10px rgba(20, 32, 48, 0.12);
+  --shadow-fab: 0 4px 12px rgba(0, 122, 204, 0.3);
+  --shadow-fab-hover: 0 6px 16px rgba(0, 122, 204, 0.4);
+  --shadow-elevated:
+    0 1px 3px rgba(0, 0, 0, 0.22), 0 1px 2px rgba(0, 0, 0, 0.34);
 
   /* Espaciado */
   --spacing-xs: 4px;
@@ -32,6 +44,7 @@
   --spacing-xl: 30px;
 
   /* Border Radius */
+  --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 12px;
   --radius-full: 9999px;

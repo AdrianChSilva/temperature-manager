@@ -78,7 +78,7 @@ export function GroupActions({ anyZoneOn, onRename, onDelete, onTogglePower }) {
             className="group-header__dropdown-item"
             onClick={handleAction(onRename)}
           >
-            ✎ Renombrar
+            Renombrar
           </button>
 
           <div className="group-header__dropdown-divider" />
@@ -106,7 +106,7 @@ export function GroupActions({ anyZoneOn, onRename, onDelete, onTogglePower }) {
               className="group-header__dropdown-item group-header__dropdown-item--danger"
               onClick={handleAction(onDelete)}
             >
-              🗑 Eliminar grupo
+              Eliminar grupo
             </button>
           </>
         </div>
