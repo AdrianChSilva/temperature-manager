@@ -1,0 +1,57 @@
+.realtime-fab {
+  position: fixed;
+  bottom: var(--spacing-xl);
+  right: var(--spacing-xl);
+  z-index: 1000;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 122, 204, 0.3);
+  transition: all var(--transition-normal);
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.realtime-fab:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: 0 6px 16px rgba(0, 122, 204, 0.4);
+  transform: translateY(-2px);
+}
+
+.realtime-fab:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 122, 204, 0.3);
+}
+
+.realtime-fab:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/*  Estado Activo  */
+.realtime-fab--active {
+  background-color: #28a745;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.realtime-fab--active:hover {
+  background-color: #218838;
+  box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+}
+
+/* === Responsive === */
+@media (max-width: 640px) {
+  .realtime-fab {
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    padding: var(--spacing-md) 14px;
+    font-size: 13px;
+    min-width: 90px;
+  }
+}
