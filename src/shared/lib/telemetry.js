@@ -25,7 +25,7 @@ export function emitOnce(socket) {
     at: Date.now(),
     items: zones.map((zone) => ({
       id: zone.id,
-      temperature: randomTempAround(zone.setpoint ?? DEFAULT_TEMPERATURE),
+      temperature: randomTempAround(zone.desiredTemp ?? DEFAULT_TEMPERATURE),
     })),
   };
 

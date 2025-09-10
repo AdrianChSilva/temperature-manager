@@ -80,7 +80,7 @@ export function NewZoneForm({ isOpen, onClose, onCreate, groups }) {
           <label className="field field--row" style={{ alignItems: "center" }}>
             <input
               type="checkbox"
-              checked={form.on}
+              checked={form.power}
               onChange={(e) =>
                 setForm((f) => ({ ...f, power: e.target.checked }))
               }
