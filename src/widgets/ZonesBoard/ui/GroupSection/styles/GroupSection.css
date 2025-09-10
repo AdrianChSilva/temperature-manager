@@ -5,15 +5,15 @@
   background: var(--color-surface);
   border-radius: var(--radius-md);
   padding: var(--spacing-sm) var(--spacing-md);
-  box-shadow: 0 1px 6px rgba(16, 24, 40, 0.1);
-  margin: 14px 0;
+  box-shadow: var(--shadow-card);
+  margin: var(--spacing-md) 0;
 }
 
 .group-header__toggle {
   all: unset;
   cursor: pointer;
-  font-size: 14px;
-  color: #3e4c59;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
   transition: var(--transition-fast);
 }
 
@@ -32,11 +32,13 @@
   gap: var(--spacing-sm);
   align-items: center;
 }
+
 .group-header .actions-buttons {
-  display: "flex";
-  gap: 8;
-  align-items: "center";
-  flex: 1;
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: auto;
 }
 
 .chip {
@@ -47,7 +49,7 @@
   border-radius: var(--radius-md);
   background: var(--chip-bg);
   color: var(--chip-fg);
-  font-size: 12px;
+  font-size: var(--font-size-xs);
   font-weight: 600;
   transition: var(--transition-fast);
 }
@@ -62,6 +64,19 @@
   background: var(--chip-bg);
   color: var(--chip-fg);
   border-color: transparent;
+}
+
+/* Hover effects for ON/OFF buttons */
+.chip--ghost:hover:not(.is-active):last-child {
+  background: var(--color-on-hover-bg);
+  color: var(--color-on);
+  border-color: var(--color-on-hover-border);
+}
+
+.chip--ghost:hover:not(.is-active):nth-last-child(2) {
+  background: var(--color-off-hover-bg);
+  color: var(--color-off);
+  border-color: var(--color-off-hover-border);
 }
 
 /* Dropdown */
@@ -111,7 +126,7 @@
   padding: var(--spacing-sm) var(--spacing-md);
   cursor: pointer;
   border-radius: var(--radius-sm);
-  font-size: 14px;
+  font-size: var(--font-size-base);
   color: var(--color-text-primary);
   margin: 2px;
   box-sizing: border-box;
@@ -136,7 +151,7 @@
   margin: var(--spacing-xs) var(--spacing-sm);
 }
 
-@media (max-width: 639px) {
+@media (max-width: 640px) {
   .group-header__actions {
     display: none;
   }
@@ -147,5 +162,9 @@
 
   .group-header__dropdown-toggle {
     display: block;
+  }
+  .group-header .actions-buttons {
+    margin-left: 0;
+    flex: 1;
   }
 }
