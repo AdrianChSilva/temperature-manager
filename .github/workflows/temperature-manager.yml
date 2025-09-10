@@ -2,7 +2,7 @@ name: Temperature Manager Pipeline
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, refactor/problems-with-ghp]
   pull_request:
     branches: [main, master]
 
@@ -122,8 +122,11 @@ jobs:
       - name: Building application
         run: pnpm build
 
+      - name: Add .nojekyll file
+        run: touch ./dist/.nojekyll
+
       - name: Deploy Temperature Manager to GitHubPages
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/refactor/problems-with-ghp'
 
         uses: peaceiris/actions-gh-pages@v4
         with:
