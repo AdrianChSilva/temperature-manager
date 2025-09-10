@@ -2,7 +2,7 @@ name: Temperature Manager Pipeline
 
 on:
   push:
-    branches: [master, refactor/problems-with-ghp]
+    branches: [master]
   pull_request:
     branches: [master]
 
@@ -40,7 +40,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Installiing dependencies
+      - name: Installing dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Run linting
@@ -119,7 +119,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Installiing dependencies
+      - name: Installing dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Building application
