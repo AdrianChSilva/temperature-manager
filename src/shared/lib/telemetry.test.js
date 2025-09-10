@@ -28,8 +28,8 @@ describe("telemetryUtils", () => {
     beforeEach(() => {
       useAppStore.setState({
         zones: [
-          { id: "zone1", setpoint: 22 },
-          { id: "zone2", setpoint: 24 },
+          { id: "zone1", desiredTemp: 22 },
+          { id: "zone2", desiredTemp: 24 },
         ],
       });
 
@@ -60,8 +60,8 @@ describe("telemetryUtils", () => {
       items.forEach((item) => {
         const zone = useAppStore.getState().zones.find((z) => z.id === item.id);
         expect(zone).toBeDefined();
-        expect(item.temperature).toBeGreaterThanOrEqual(zone.setpoint - 2.5);
-        expect(item.temperature).toBeLessThanOrEqual(zone.setpoint + 2.5);
+        expect(item.temperature).toBeGreaterThanOrEqual(zone.desiredTemp - 2.5);
+        expect(item.temperature).toBeLessThanOrEqual(zone.desiredTemp + 2.5);
       });
     });
 
@@ -73,7 +73,7 @@ describe("telemetryUtils", () => {
       expect(() => emitOnce(mockSocket)).not.toThrow();
     });
 
-    it("should use default temperature when setpoint is not defined", () => {
+    it("should use default temperature when desiredTemp is not defined", () => {
       useAppStore.setState({
         zones: [{ id: "zone3" }],
       });

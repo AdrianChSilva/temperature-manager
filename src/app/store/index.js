@@ -9,7 +9,7 @@ export const useAppStore = create(
           id: "z1",
           name: "Salón",
           power: true,
-          temperature: 22,
+          temperature: 24,
           desiredTemp: 22,
           groupId: "g1",
         },
@@ -25,7 +25,7 @@ export const useAppStore = create(
           id: "z3",
           name: "Oficina",
           power: true,
-          temperature: 20,
+          temperature: 24,
           desiredTemp: 22,
           groupId: "g2",
         },
@@ -51,7 +51,7 @@ export const useAppStore = create(
           ? Number(desiredTemp)
           : temp;
 
-        const isOn = typeof on === "boolean" ? power : false;
+        const isOn = typeof power === "boolean" ? power : false;
         const zone = {
           id: crypto.randomUUID(),
           groupId,
