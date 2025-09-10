@@ -2,9 +2,9 @@ name: Temperature Manager Pipeline
 
 on:
   push:
-    branches: [main, master]
+    branches: [master]
   pull_request:
-    branches: [main, master]
+    branches: [master]
 
 env:
   NODE_VERSION: "22"
@@ -40,7 +40,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Installiing dependencies
+      - name: Installing dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Run linting
@@ -90,9 +90,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: quality-and-tests
     permissions:
-      contents: write
+      contents: read
       pages: write
       id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
@@ -116,21 +119,23 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Installiing dependencies
+      - name: Installing dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Building application
         run: pnpm build
 
-      - name: Deploy Temperature Manager to GitHubPages
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-        
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Add .nojekyll file
+        run: touch ./dist/.nojekyll
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          enable_jekyll: false
-          allow_empty_commit: false
-          force_orphan: true
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
