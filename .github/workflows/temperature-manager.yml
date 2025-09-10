@@ -89,6 +89,7 @@ jobs:
     name: Build & Deploy
     runs-on: ubuntu-latest
     needs: quality-and-tests
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     permissions:
       contents: read
       pages: write
