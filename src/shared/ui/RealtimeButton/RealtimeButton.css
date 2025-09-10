@@ -8,10 +8,10 @@
   border: none;
   border-radius: var(--radius-full);
   padding: var(--spacing-md) var(--spacing-lg);
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 122, 204, 0.3);
+  box-shadow: var(--shadow-fab);
   transition: all var(--transition-normal);
   min-width: 100px;
   text-align: center;
@@ -20,7 +20,7 @@
 
 .realtime-fab:hover {
   background-color: var(--color-primary-hover);
-  box-shadow: 0 6px 16px rgba(0, 122, 204, 0.4);
+  box-shadow: var(--shadow-fab-hover);
   transform: translateY(-2px);
 }
 
@@ -36,7 +36,7 @@
 
 /*  Estado Activo  */
 .realtime-fab--active {
-  background-color: #28a745;
+  background-color: var(--color-on);
   box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
 }
 
@@ -50,8 +50,8 @@
   .realtime-fab {
     bottom: var(--spacing-lg);
     right: var(--spacing-lg);
-    padding: var(--spacing-md) 14px;
-    font-size: 13px;
+    padding: var(--spacing-md);
+    font-size: var(--font-size-sm);
     min-width: 90px;
   }
 }
