@@ -5,12 +5,12 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react()],
   resolve: {
     alias: { "@": path.resolve(__dirname, "src") },
   },
-  base: "./",
+  base: command === "build" ? "/temperature-manager/" : "/",
   server: {
     host: true,
   },
@@ -32,4 +32,4 @@ export default defineConfig({
       ],
     },
   },
-});
+}));
