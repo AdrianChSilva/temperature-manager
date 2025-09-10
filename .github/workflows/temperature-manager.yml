@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        task: [quality, unit-tests]
+        task: [quality, unit-tests, e2e-tests]
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
@@ -63,6 +63,28 @@ jobs:
           path: coverage/
           retention-days: 7
 
+      - name: Install Playwright browsers
+        if: matrix.task == 'e2e-tests'
+        run: pnpm exec playwright install --with-deps
+
+      - name: Build application for E2E
+        if: matrix.task == 'e2e-tests'
+        run: pnpm build
+
+      - name: Run E2E tests
+        if: matrix.task == 'e2e-tests'
+        run: pnpm test:e2e
+
+      - name: Upload E2E test results
+        if: matrix.task == 'e2e-tests' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-test-results
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 2
+          
   build-and-deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
