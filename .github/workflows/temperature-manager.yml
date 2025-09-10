@@ -84,7 +84,7 @@ jobs:
             test-results/
             playwright-report/
           retention-days: 2
-          
+
   build-and-deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
