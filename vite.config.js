@@ -28,6 +28,7 @@ export default defineConfig({
         "src/app/App.jsx",
         "**/*.{test,spec}.?(js|jsx)",
         "node_modules/**",
+        "e2e/**",
       ],
     },
   },
