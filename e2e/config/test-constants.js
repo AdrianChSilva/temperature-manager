@@ -43,7 +43,6 @@ export const TEST_DATA = {
   },
 };
 
-// Test configuration
 export const TEST_CONFIG = {
   TIMEOUTS: {
     DEFAULT: 5000,
