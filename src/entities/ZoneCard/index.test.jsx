@@ -3,6 +3,11 @@ import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import { ZoneCard } from "./index";
 
+const mockNavigate = vi.fn();
+vi.mock("react-router-dom", () => ({
+  useNavigate: () => mockNavigate,
+}));
+
 describe("ZoneCard", () => {
   const zoneMock = {
     id: "zone-1",

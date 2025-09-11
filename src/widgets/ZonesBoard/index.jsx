@@ -22,17 +22,15 @@ export function ZonesBoard() {
 
   return (
     <>
-      <div className="page-wrap">
-        <BoardHeader>
-          <ActionButtons
-            onNewGroupClick={() => setNewGroupOpen(true)}
-            onNewZoneClick={() => setNewZoneOpen(true)}
-          />
-        </BoardHeader>
-        {grouped.map(({ group, zones }) => (
-          <GroupSection key={group.id} group={group} zones={zones} />
-        ))}
-      </div>
+      <BoardHeader>
+        <ActionButtons
+          onNewGroupClick={() => setNewGroupOpen(true)}
+          onNewZoneClick={() => setNewZoneOpen(true)}
+        />
+      </BoardHeader>
+      {grouped.map(({ group, zones }) => (
+        <GroupSection key={group.id} group={group} zones={zones} />
+      ))}
       <CreateZoneModal
         isOpen={newZoneOpen}
         onClose={() => setNewZoneOpen(false)}

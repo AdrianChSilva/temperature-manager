@@ -71,6 +71,20 @@ export const useAppStore = create(
         });
       },
 
+      updateZone(id, updates) {
+        set({
+          zones: get().zones.map((zone) =>
+            zone.id === id ? { ...zone, ...updates } : zone
+          ),
+        });
+      },
+
+      deleteZone(id) {
+        set({
+          zones: get().zones.filter((zone) => zone.id !== id),
+        });
+      },
+
       addGroup(name) {
         const group = { id: crypto.randomUUID(), name };
         set({ groups: [...get().groups, group] });

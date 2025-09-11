@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./styles/ZoneCard.css";
 import { getZoneState, getSubtitle } from "./lib/zoneCardUtilities";
@@ -10,6 +11,7 @@ const ARIA_LABELS = {
 };
 
 export function ZoneCard({ zone, onToggle }) {
+  const navigate = useNavigate();
   const zoneState = getZoneState(zone);
   const subtitle = getSubtitle(zone);
 
@@ -21,10 +23,15 @@ export function ZoneCard({ zone, onToggle }) {
     [onToggle, zone.id]
   );
 
+  const handleCardClick = useCallback(() => {
+    navigate(`/zone/${zone.id}`);
+  }, [navigate, zone.id]);
+
   return (
     <article
       className={`zone-card state-${zoneState}`}
       aria-label={ARIA_LABELS.zoneLabel(zone.name)}
+      onClick={handleCardClick}
     >
       <div className="bg-comfort" aria-hidden="true" />
       <div className="decorative-icon" aria-hidden="true" />
