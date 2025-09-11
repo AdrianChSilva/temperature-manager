@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "@/pages/Home";
 import { ZoneDetailPage } from "@/pages/ZoneDetail";
 import { NotFoundPage } from "@/pages/NotFound";
@@ -6,7 +6,7 @@ import { RealtimeButton } from "@/shared/ui/RealtimeButton";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="app-container">
         <main className="container">
           <Routes>
@@ -17,7 +17,7 @@ function App() {
           <RealtimeButton />
         </main>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
