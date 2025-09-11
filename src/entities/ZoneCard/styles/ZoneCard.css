@@ -1,5 +1,6 @@
 /* Base Card */
 .zone-card {
+  cursor: pointer;
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
