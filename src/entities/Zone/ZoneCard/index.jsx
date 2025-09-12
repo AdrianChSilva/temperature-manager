@@ -1,16 +1,16 @@
-import { useCallback } from "react";
+import { useCallback, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./styles/ZoneCard.css";
 import { getZoneState, getSubtitle } from "./lib/zoneCardUtilities";
 
 const ARIA_LABELS = {
-  zoneLabel: (name) => `Zone: ${name}`,
-  powerOn: "Turn off",
-  powerOff: "Turn on",
+  zoneLabel: (name) => `Zona: ${name}`,
+  powerOn: "Apagar",
+  powerOff: "Encender",
 };
 
-export function ZoneCard({ zone, onToggle }) {
+export const ZoneCard = memo(function ZoneCard({ zone, onToggle }) {
   const navigate = useNavigate();
   const zoneState = getZoneState(zone);
   const subtitle = getSubtitle(zone);
@@ -23,9 +23,9 @@ export function ZoneCard({ zone, onToggle }) {
     [onToggle, zone.id]
   );
 
-  const handleCardClick = useCallback(() => {
+  const handleCardClick = () => {
     navigate(`/zone/${zone.id}`);
-  }, [navigate, zone.id]);
+  };
 
   return (
     <article
@@ -65,7 +65,7 @@ export function ZoneCard({ zone, onToggle }) {
       </div>
     </article>
   );
-}
+});
 
 ZoneCard.propTypes = {
   zone: PropTypes.shape({
