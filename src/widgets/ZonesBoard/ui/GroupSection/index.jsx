@@ -1,7 +1,7 @@
 import { useAppStore } from "@/app/store";
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { ZoneCard } from "@/entities/ZoneCard";
+import { ZoneCard } from "@/entities/Zone/ZoneCard";
 import { GroupHeader } from "./ui/GroupHeader";
 import { GroupEditForm } from "./ui/GroupEditForm";
 import { GroupActions } from "./ui/GroupActions";

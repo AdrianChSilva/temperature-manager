@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAppStore } from "@/app/store";
 import { EditZoneForm } from "@/entities/Zone/EditZoneForm";
-import { getSubtitle } from "@/entities/ZoneCard/lib/zoneCardUtilities";
+import { getSubtitle } from "@/entities/Zone/ZoneCard/lib/zoneCardUtilities";
 import { NotFoundPage } from "@/pages/NotFound";
-import "@/entities/ZoneCard/styles/ZoneCard.css";
+import "@/entities/Zone/ZoneCard/styles/ZoneCard.css";
 import "./ZoneDetail.css";
 
 export function ZoneDetailPage() {

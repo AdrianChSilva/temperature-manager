@@ -27,7 +27,7 @@ vi.mock("@/app/store", () => ({
   },
 }));
 
-vi.mock("@/entities/ZoneCard", () => ({
+vi.mock("@/entities/Zone/ZoneCard", () => ({
   ZoneCard: ({ zone, onToggle }) => (
     <div data-testid={`zone-card-${zone.id}`}>
       <span>{zone.name}</span>

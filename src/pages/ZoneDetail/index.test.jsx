@@ -44,7 +44,7 @@ vi.mock("@/entities/Zone/EditZoneForm", () => ({
   ),
 }));
 
-vi.mock("@/entities/ZoneCard/lib/zoneCardUtilities", () => ({
+vi.mock("@/entities/Zone/ZoneCard/lib/zoneCardUtilities", () => ({
   getSubtitle: () => "Heating to 22°",
 }));
 
