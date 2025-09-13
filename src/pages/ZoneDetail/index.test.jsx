@@ -3,7 +3,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { ZoneDetailPage } from "./index";
 
 const mockNavigate = vi.fn();
-const mockToggleZone = vi.fn();
+const mockToggleZonePower = vi.fn();
 const mockUpdateZone = vi.fn();
 const mockDeleteZone = vi.fn();
 
@@ -24,7 +24,7 @@ vi.mock("@/app/store", () => {
           power: true,
         },
       ],
-      toggleZone: mockToggleZone,
+      toggleZonePower: mockToggleZonePower,
       updateZone: mockUpdateZone,
       deleteZone: mockDeleteZone,
     });
@@ -81,7 +81,7 @@ describe("ZoneDetailPage", () => {
 
     fireEvent.click(powerButton);
 
-    expect(mockToggleZone).toHaveBeenCalledWith("1");
+    expect(mockToggleZonePower).toHaveBeenCalledWith("1");
   });
 
   it("opens edit form when edit button is clicked", () => {

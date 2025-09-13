@@ -63,7 +63,7 @@ export const useAppStore = create(
         set({ zones: [...get().zones, zone] });
       },
 
-      toggleZone(id) {
+      toggleZonePower(id) {
         set({
           zones: get().zones.map((zone) =>
             zone.id === id ? { ...zone, power: !zone.power } : zone
@@ -102,7 +102,6 @@ export const useAppStore = create(
       deleteGroup(id) {
         const filteredGroups = get().groups.filter((group) => group.id !== id);
         const filteredZones = get().zones.filter((zone) => zone.groupId !== id);
-        // Also remove from expandedGroups UI state
         const expanded = get().ui.expandedGroups.filter((gid) => gid !== id);
         set({
           groups: filteredGroups,

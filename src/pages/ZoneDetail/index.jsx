@@ -13,7 +13,7 @@ export function ZoneDetailPage() {
   const [isEditing, setIsEditing] = useState(false);
 
   const zone = useAppStore((state) => state.zones.find((z) => z.id === zoneId));
-  const toggleZone = useAppStore((state) => state.toggleZone);
+  const toggleZonePower = useAppStore((state) => state.toggleZonePower);
   const updateZone = useAppStore((state) => state.updateZone);
   const deleteZone = useAppStore((state) => state.deleteZone);
 
@@ -24,7 +24,7 @@ export function ZoneDetailPage() {
   const subtitle = getSubtitle(zone);
 
   const handleTogglePower = () => {
-    toggleZone(zone.id);
+    toggleZonePower(zone.id);
   };
 
   const handleEdit = () => {

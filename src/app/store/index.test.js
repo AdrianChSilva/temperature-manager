@@ -24,10 +24,10 @@ describe("AppStore", () => {
       };
       useAppStore.setState({ zones: [zone] });
 
-      useAppStore.getState().toggleZone("test-1");
+      useAppStore.getState().toggleZonePower("test-1");
       expect(useAppStore.getState().zones[0].power).toBe(true);
 
-      useAppStore.getState().toggleZone("test-1");
+      useAppStore.getState().toggleZonePower("test-1");
       expect(useAppStore.getState().zones[0].power).toBe(false);
     });
   });

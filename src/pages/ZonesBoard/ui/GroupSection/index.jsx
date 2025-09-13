@@ -8,19 +8,19 @@ import { GroupActions } from "./ui/GroupActions";
 import "./styles/GroupSection.css";
 
 export function GroupSection({ group, zones }) {
-  const ui = useAppStore((s) => s.ui);
-  const toggleGroupPower = useAppStore((s) => s.toggleGroupPower);
-  const expandGroup = useAppStore((s) => s.expandGroup);
-  const collapseGroup = useAppStore((s) => s.collapseGroup);
-  const toggleZone = useAppStore((s) => s.toggleZone);
-  const deleteGroup = useAppStore((s) => s.deleteGroup);
-  const renameGroup = useAppStore((s) => s.renameGroup);
+  const ui = useAppStore((state) => state.ui);
+  const toggleGroupPower = useAppStore((state) => state.toggleGroupPower);
+  const expandGroup = useAppStore((state) => state.expandGroup);
+  const collapseGroup = useAppStore((state) => state.collapseGroup);
+  const toggleZonePower = useAppStore((state) => state.toggleZonePower);
+  const deleteGroup = useAppStore((state) => state.deleteGroup);
+  const renameGroup = useAppStore((state) => state.renameGroup);
 
   const [editingId, setEditingId] = useState(null);
   const [editName, setEditName] = useState("");
 
   const expanded = ui.expandedGroups.includes(group.id);
-  const anyTurnedOn = zones.some((z) => z.power);
+  const anyTurnedOn = zones.some((zone) => zone.power);
 
   const handleTogglePower = (powerState) => {
     toggleGroupPower(group.id, powerState);
@@ -36,7 +36,7 @@ export function GroupSection({ group, zones }) {
 
   const handleDelete = () => {
     const zonesToDelete = zones.filter(
-      (zonas) => zonas.groupId === group.id
+      (zones) => zones.groupId === group.id
     ).length;
     const ok = confirm(
       `¿Eliminar el grupo "${group.name}"?\n\n` +
@@ -87,9 +87,9 @@ export function GroupSection({ group, zones }) {
 
       {expanded && (
         <div className="zones-grid" role="list">
-          {zones.map((z) => (
-            <div role="listitem" key={z.id}>
-              <ZoneCard zone={z} onToggle={toggleZone} />
+          {zones.map((zone) => (
+            <div role="listitem" key={zone.id}>
+              <ZoneCard zone={zone} onToggle={toggleZonePower} />
             </div>
           ))}
           {zones.length === 0 && (

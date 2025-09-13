@@ -8,7 +8,7 @@ const mockStoreActions = {
   toggleGroupPower: vi.fn(),
   expandGroup: vi.fn(),
   collapseGroup: vi.fn(),
-  toggleZone: vi.fn(),
+  toggleZonePower: vi.fn(),
   deleteGroup: vi.fn(),
   renameGroup: vi.fn(),
 };
@@ -175,6 +175,6 @@ describe("GroupSection", () => {
     const zoneButton = zoneCard.querySelector("button");
     await userEvent.click(zoneButton);
 
-    expect(mockStoreActions.toggleZone).toHaveBeenCalledWith("z1");
+    expect(mockStoreActions.toggleZonePower).toHaveBeenCalledWith("z1");
   });
 });

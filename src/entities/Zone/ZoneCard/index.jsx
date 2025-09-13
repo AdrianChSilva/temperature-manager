@@ -1,4 +1,4 @@
-import { useCallback, memo } from "react";
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./styles/ZoneCard.css";
@@ -15,13 +15,10 @@ export const ZoneCard = memo(function ZoneCard({ zone, onToggle }) {
   const zoneState = getZoneState(zone);
   const subtitle = getSubtitle(zone);
 
-  const handleToggle = useCallback(
-    (e) => {
-      e.stopPropagation();
-      onToggle(zone.id);
-    },
-    [onToggle, zone.id]
-  );
+  const handleToggle = (e) => {
+    e.stopPropagation();
+    onToggle(zone.id);
+  };
 
   const handleCardClick = () => {
     navigate(`/zone/${zone.id}`);
