@@ -1,5 +1,5 @@
 import { Server } from "mock-socket";
-import { emitOnce } from "../lib/telemetry";
+import { emitOnce } from "./lib/telemetry";
 
 export const WS_URL = "ws://localhost:77777/telemetry";
 let server;

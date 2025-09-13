@@ -1,14 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useAppStore } from "@/app/store";
-import { ensureMockServer, WS_URL } from "../api/websocketClient";
-
-const updateZoneData = (id, patch) => {
-  const { zones } = useAppStore.getState();
-  const updatedZones = zones.map((zone) =>
-    zone.id === id ? { ...zone, ...patch } : zone
-  );
-  useAppStore.setState({ zones: updatedZones });
-};
+import { ensureMockServer, WS_URL } from "../websocketClient";
 
 export function useRealtimeWS() {
   useEffect(() => {
@@ -37,7 +29,7 @@ export function useRealtimeWS() {
         const message = JSON.parse(event.data);
         if (message?.type === "telemetry" && message.items?.length > 0) {
           message.items.forEach(({ id, temperature }) => {
-            updateZoneData(id, { temperature });
+            useAppStore.getState().updateZone(id, { temperature });
           });
         }
       } catch (error) {

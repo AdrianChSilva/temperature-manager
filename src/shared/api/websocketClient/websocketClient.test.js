@@ -1,9 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { Server } from "mock-socket";
 import { WS_URL, ensureMockServer } from "./websocketClient";
-import { emitOnce } from "../lib/telemetry";
+import { emitOnce } from "./lib/telemetry";
 
-vi.mock("../lib/telemetry", () => ({
+vi.mock("./lib/telemetry", () => ({
   emitOnce: vi.fn(),
 }));
 

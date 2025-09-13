@@ -2,11 +2,6 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { RealtimeButton } from "./index";
-import { useRealtimeWS } from "../../hooks/useRealtimeWS";
-
-vi.mock("../../hooks/useRealtimeWS", () => ({
-  useRealtimeWS: vi.fn(),
-}));
 
 describe("RealtimeButton", () => {
   const mockSetActive = vi.fn();
@@ -16,12 +11,7 @@ describe("RealtimeButton", () => {
   });
 
   it("should render OFF state when inactive", () => {
-    useRealtimeWS.mockReturnValue({
-      active: false,
-      setActive: mockSetActive,
-    });
-
-    render(<RealtimeButton />);
+    render(<RealtimeButton isActive={false} setActive={mockSetActive} />);
 
     const button = screen.getByRole("button");
     expect(button).toHaveTextContent("Realtime OFF");
@@ -30,12 +20,7 @@ describe("RealtimeButton", () => {
   });
 
   it("should render ON state when active", () => {
-    useRealtimeWS.mockReturnValue({
-      active: true,
-      setActive: mockSetActive,
-    });
-
-    render(<RealtimeButton />);
+    render(<RealtimeButton isActive={true} setActive={mockSetActive} />);
 
     const button = screen.getByRole("button");
     expect(button).toHaveTextContent("Realtime ON");
@@ -44,12 +29,7 @@ describe("RealtimeButton", () => {
   });
 
   it("should toggle state when clicked", async () => {
-    useRealtimeWS.mockReturnValue({
-      active: false,
-      setActive: mockSetActive,
-    });
-
-    render(<RealtimeButton />);
+    render(<RealtimeButton isActive={false} setActive={mockSetActive} />);
 
     const button = screen.getByRole("button");
     await userEvent.click(button);

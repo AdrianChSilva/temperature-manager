@@ -47,9 +47,8 @@ export function EditZoneForm({ zone, onSave, onCancel, isOpen }) {
               type="number"
               value={desiredTemp}
               onChange={(e) => setDesiredTemp(e.target.value)}
-              min="5"
-              max="35"
-              step="0.5"
+              min="0"
+              max="50"
               required
             />
           </label>
