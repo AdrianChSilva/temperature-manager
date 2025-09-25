@@ -15,9 +15,6 @@ export function GroupActions({ anyZoneOn, onRename, onDelete, onTogglePower }) {
       }
     };
 
-    const handleKey = (e) => {
-      if (e.key === "Escape") setIsOpen(false);
-    };
     const handleResize = () => {
       if (window.innerWidth >= 640) {
         setIsOpen(false);
@@ -25,11 +22,10 @@ export function GroupActions({ anyZoneOn, onRename, onDelete, onTogglePower }) {
     };
 
     document.addEventListener("mousedown", handleDocumentClick);
-    document.addEventListener("keydown", handleKey);
     window.addEventListener("resize", handleResize);
     return () => {
       document.removeEventListener("mousedown", handleDocumentClick);
-      document.removeEventListener("keydown", handleKey);
+      document.removeEventListener("resize", handleResize);
     };
   }, []);
 
