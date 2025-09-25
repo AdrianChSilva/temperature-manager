@@ -6,8 +6,7 @@ import { GroupSection } from "./index";
 // Mock del store
 const mockStoreActions = {
   toggleGroupPower: vi.fn(),
-  expandGroup: vi.fn(),
-  collapseGroup: vi.fn(),
+  toggleGroupExpansion: vi.fn(),
   toggleZonePower: vi.fn(),
   deleteGroup: vi.fn(),
   renameGroup: vi.fn(),
@@ -97,7 +96,7 @@ describe("GroupSection", () => {
     const toggleButton = screen.getByTitle("Contraer");
     await userEvent.click(toggleButton);
 
-    expect(mockStoreActions.collapseGroup).toHaveBeenCalledWith("g1");
+    expect(mockStoreActions.toggleGroupExpansion).toHaveBeenCalledWith("g1");
   });
 
   it("toggles group power", async () => {

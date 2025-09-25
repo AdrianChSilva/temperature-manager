@@ -10,8 +10,9 @@ import "./styles/GroupSection.css";
 export function GroupSection({ group, zones }) {
   const ui = useAppStore((state) => state.ui);
   const toggleGroupPower = useAppStore((state) => state.toggleGroupPower);
-  const expandGroup = useAppStore((state) => state.expandGroup);
-  const collapseGroup = useAppStore((state) => state.collapseGroup);
+  const toggleGroupExpansion = useAppStore(
+    (state) => state.toggleGroupExpansion
+  );
   const toggleZonePower = useAppStore((state) => state.toggleZonePower);
   const deleteGroup = useAppStore((state) => state.deleteGroup);
   const renameGroup = useAppStore((state) => state.renameGroup);
@@ -26,7 +27,7 @@ export function GroupSection({ group, zones }) {
     toggleGroupPower(group.id, powerState);
   };
   const handleToggleExpansion = () => {
-    expanded ? collapseGroup(group.id) : expandGroup(group.id);
+    toggleGroupExpansion(group.id);
   };
 
   const handleRename = () => {

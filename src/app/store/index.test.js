@@ -92,11 +92,13 @@ describe("AppStore", () => {
   });
 
   describe("UI State", () => {
-    it("should expand and collapse groups", () => {
-      useAppStore.getState().expandGroup("g1");
+    it("should toggle group expansion", () => {
+      useAppStore.setState({ ui: { expandedGroups: [] } });
+
+      useAppStore.getState().toggleGroupExpansion("g1");
       expect(useAppStore.getState().ui.expandedGroups).toContain("g1");
 
-      useAppStore.getState().collapseGroup("g1");
+      useAppStore.getState().toggleGroupExpansion("g1");
       expect(useAppStore.getState().ui.expandedGroups).not.toContain("g1");
     });
   });

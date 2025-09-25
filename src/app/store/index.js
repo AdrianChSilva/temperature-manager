@@ -127,25 +127,14 @@ export const useAppStore = create(
         });
       },
 
-      expandGroup(groupId) {
-        const currentExpanded = get().ui.expandedGroups;
-        if (!currentExpanded.includes(groupId)) {
-          set({
-            ui: {
-              ...get().ui,
-              expandedGroups: [...currentExpanded, groupId],
-            },
-          });
-        }
-      },
-
-      collapseGroup(groupId) {
+      toggleGroupExpansion(groupId) {
+        const expanded = get().ui.expandedGroups;
         set({
           ui: {
             ...get().ui,
-            expandedGroups: get().ui.expandedGroups.filter(
-              (id) => id !== groupId
-            ),
+            expandedGroups: expanded.includes(groupId)
+              ? expanded.filter((id) => id !== groupId)
+              : [...expanded, groupId],
           },
         });
       },
@@ -153,7 +142,6 @@ export const useAppStore = create(
     {
       name: "temperature-management",
       storage: createJSONStorage(() => localStorage),
-      version: 1,
       partialize: (state) => ({
         zones: state.zones,
         groups: state.groups,
