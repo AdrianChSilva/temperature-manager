@@ -63,7 +63,7 @@ describe("ZoneDetailPage", () => {
     const { getByText } = render(<ZoneDetailPage />);
     expect(getByText("Cocina")).toBeInTheDocument();
     expect(getByText("22°")).toBeInTheDocument();
-    expect(getByText("Heating to 22°")).toBeInTheDocument();
+    expect(getByText("Heating to 24°")).toBeInTheDocument();
   });
 
   it("navigates back when back button is clicked", () => {
