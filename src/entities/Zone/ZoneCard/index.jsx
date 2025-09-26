@@ -1,8 +1,8 @@
 import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import "./styles/ZoneCard.css";
-import { getZoneState, getSubtitle } from "./lib/zoneCardUtilities";
+import "../styles/ZoneCard.css";
+import { getZoneState, getSubtitle } from "../lib/zoneCardUtilities";
 
 const ARIA_LABELS = {
   zoneLabel: (name) => `Zona: ${name}`,

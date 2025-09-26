@@ -21,6 +21,7 @@ Puedes compilar la aplicación y correrla en local o puedes acceder desde aqui h
 ## Funcionalidades
 
 - Crear Zonas
+- Editar Zonas
 - Crear Grupos
 - Editar Grupos
 - Simulacion de temperaturas
@@ -35,7 +36,7 @@ El proyecto sigue la arquitectura **Feature-Sliced Design (FSD)**, que organiza 
 
 ### Requisitos Previos
 
-- **Node.js** >= 16.0.0
+- **Node.js** >= 20.19.0
 - **pnpm** >= 7.0.0
 
 ```bash
